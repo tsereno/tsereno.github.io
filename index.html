@@ -60,6 +60,32 @@ function download_csv_file() {
 <!-- create an HTML button to download the CSV file on click -->  
 <button onclick="download_csv_file()"> Download CSV </button>  
 
+<input type="file" id="fileinput" />
+<script>
+  function readSingleFile(evt) {
+    var f = evt.target.files[0]; 
+    if (f) {
+      var r = new FileReader();
+      r.onload = function(e) { 
+          var contents = e.target.result;
+          document.write("File Uploaded! <br />" + "name: " + f.name + "<br />" + "content: " + contents + "<br />" + "type: " + f.type + "<br />" + "size: " + f.size + " bytes <br />");
+
+          var lines = contents.split("\n"), output = [];
+          for (var i=0; i<lines.length; i++){
+            output.push("<tr><td>" + lines[i].split(",").join("</td><td>") + "</td></tr>");
+          }
+          output = "<table>" + output.join("") + "</table>";
+          document.write(output);
+     }
+      r.readAsText(f);
+      document.write(output);
+    } else { 
+      alert("Failed to load file");
+    }
+  }
+  document.getElementById('fileinput').addEventListener('change', readSingleFile);
+</script>
+
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
 <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
 <p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning" id="num-observed-events">0</span></p>
