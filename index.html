@@ -30,7 +30,7 @@ function download_csv_file() {
     });  
    
     //display the created CSV data on the web browser   
-    document.write(csv);  
+    //document.write(csv);  
   
      
     var hiddenElement = document.createElement('a');  
@@ -59,7 +59,8 @@ function download_csv_file() {
 
 <label for="train_type">Train Type:</label>
 <input type="text" id="train_type" name="train_type"><br><br>
-  
+
+<!--  
 <input type="file" id="fileinput" />
 <script>
   function readSingleFile(evt) {
@@ -85,6 +86,7 @@ function download_csv_file() {
   }
   document.getElementById('fileinput').addEventListener('change', readSingleFile);
 </script>
+-->
 
 <!-- create an HTML button to download the CSV file on click -->  
 <button onclick="download_csv_file()"> Download CSV </button>  
