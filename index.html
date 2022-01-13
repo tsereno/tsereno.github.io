@@ -8,23 +8,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>  
-//create CSV file data in an array  
-var csvFileData = [  
-   ['Alan Walker', 'Singer'],  
-   ['Cristiano Ronaldo', 'Footballer'],  
-   ['Saina Nehwal', 'Badminton Player'],  
-   ['Arijit Singh', 'Singer'],  
-   ['Terence Lewis', 'Dancer']  
-];  
     
 //create a user-defined function to download CSV file   
 function download_csv_file() {  
   
     //define the heading for each row of the data  
-    var csv = 'Name,Profession\n';  
+    var csv = 'alpha,beta,gamma,accelerationIncludingGravity.x,accelerationIncludingGravity.y,accelerationIncludingGravity.z,acceleration.x,acceleration.y,acceleration.z,rotationRate.alpha,rotationRate.beta,rotationRate.gamma\n';  
       
     //merge the data with CSV  
-    csvFileData.forEach(function(row) {  
+    arrSensors.forEach(function(row) {  
             csv += row.join(',');  
             csv += "\n";  
     });  
@@ -130,6 +122,9 @@ function download_csv_file() {
 </main>
 <script>
 
+var arrSensors = new Array();
+var valueToPush = new Array();
+
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_a', event.alpha);
   updateFieldIfNotNull('Orientation_b', event.beta);
@@ -149,6 +144,20 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 }
 
 function handleMotion(event) {
+  valueToPush[0] = event.alpha;
+  valueToPush[1] = event.beta;
+  valueToPush[2] = event.gamma;
+  valueToPush[3] = event.accelerationIncludingGravity.x;
+  valueToPush[4] = event.accelerationIncludingGravity.y;
+  valueToPush[5] = event.accelerationIncludingGravity.z;
+  valueToPush[6] = event.acceleration.x;
+  valueToPush[7] = event.acceleration.y;
+  valueToPush[8] = event.acceleration.z;
+  valueToPush[9] = event.rotationRate.alpha;
+  valueToPush[10] = event.rotationRate.beta;
+  valueToPush[11] = event.rotationRate.gamma;
+  arrSensors.push(valueToPush);
+
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
