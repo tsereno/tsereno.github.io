@@ -55,11 +55,11 @@ function download_csv_file() {
 <body>
 <main role="main" class="container">
 
-<h3> Click the button to download the CSV file </h3>  
-  
-<!-- create an HTML button to download the CSV file on click -->  
-<button onclick="download_csv_file()"> Download CSV </button>  
+<h3> Sports Trainer </h3>  
 
+<label for="train_type">Train Type:</label>
+<input type="text" id="train_type" name="train_type"><br><br>
+  
 <input type="file" id="fileinput" />
 <script>
   function readSingleFile(evt) {
@@ -86,8 +86,11 @@ function download_csv_file() {
   document.getElementById('fileinput').addEventListener('change', readSingleFile);
 </script>
 
+<!-- create an HTML button to download the CSV file on click -->  
+<button onclick="download_csv_file()"> Download CSV </button>  
+
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
-<a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
+<a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start Training</a>
 <p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning" id="num-observed-events">0</span></p>
 
 
@@ -189,7 +192,7 @@ demo_button.onclick = function(e) {
   }else{
     window.addEventListener("devicemotion", handleMotion);
     window.addEventListener("deviceorientation", handleOrientation);
-    document.getElementById("start_demo").innerHTML = "Stop demo";
+    document.getElementById("start_demo").innerHTML = "Stop Training";
     demo_button.classList.remove('btn-success');
     demo_button.classList.add('btn-danger');
     is_running = true;
