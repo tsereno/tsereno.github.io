@@ -13,7 +13,7 @@
 function download_csv_file() {  
   
     //define the heading for each row of the data  
-    var csv = 'alpha,beta,gamma,accelerationIncludingGravity.x,accelerationIncludingGravity.y,accelerationIncludingGravity.z,acceleration.x,acceleration.y,acceleration.z,rotationRate.alpha,rotationRate.beta,rotationRate.gamma\n';  
+    var csv = 'alpha,beta,gamma,accelerationIncludingGravity.x,accelerationIncludingGravity.y,accelerationIncludingGravity.z,acceleration.x,acceleration.y,acceleration.z,interval,rotationRate.alpha,rotationRate.beta,rotationRate.gamma\n';  
       
     //merge the data with CSV  
     arrSensors.forEach(function(row) {  
@@ -157,6 +157,7 @@ function handleMotion(event) {
   valueToPush[9]=-999;
   valueToPush[10]=-999;
   valueToPush[11]=-999;
+  valueToPush[11]=-999;
   if (event.alpha != null)
     valueToPush[0] = event.alpha;
   if (event.beta != null)
@@ -175,13 +176,15 @@ function handleMotion(event) {
     valueToPush[7] = event.acceleration.y;
   if (event.acceleration.z != null)
     valueToPush[8] = event.acceleration.z;
-  if (event.rotationRate.alpha != null)
-    valueToPush[9] = event.rotationRate.alpha;
+  if (event.interval != null)
+    valueToPush[9] = event.interval;
   if (event.rotationRate.beta != null)
     valueToPush[10] = event.rotationRate.beta;
   if (event.rotationRate.gamma != null)
     valueToPush[11] = event.rotationRate.gamma;
-  arrSensors.push([valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11]]);
+  if (event.rotationRate.alpha != null)
+    valueToPush[12] = event.rotationRate.alpha;
+  arrSensors.push([valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
   //alert(arrSensors);
 
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
@@ -194,9 +197,9 @@ function handleMotion(event) {
 
   updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
-  updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
   updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
+  updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
   incrementEventCount();
 }
 
