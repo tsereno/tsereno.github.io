@@ -16,36 +16,11 @@ function download_csv_file() {
     var csv = 'alpha,beta,gamma,accelerationIncludingGravity.x,accelerationIncludingGravity.y,accelerationIncludingGravity.z,acceleration.x,acceleration.y,acceleration.z,rotationRate.alpha,rotationRate.beta,rotationRate.gamma\n';  
       
     //merge the data with CSV  
-    //arrSensors.forEach(function(row) {  
-    //        csv += row.join(',');  
-    //        csv += "\n";  
-    //});  
+    arrSensors.forEach(function(row) {  
+            csv += row.join(',');  
+            csv += "\n";  
+    });  
    
-for (var index1 in arrSensors) {
-  var row = arrSensors[index1];
-    
-  // Row is the row of array at index "index1"
-  var string = "";
-    
-  // Empty string which will be added later
-  for (var index in row) {
-    // Traversing each element in the row
-    var w = row[index];
-      
-    // Adding the element at index "index" to the string
-    string += w;
-    if (index != row.length - 1) {
-      string += ",";
-      // If the element is not the last element , then add a comma
-    }
-  }
-  string += "\n";
-    
-  // Adding next line at the end
-  csv += string;
-  // adding the string to the final string "csv"
-}
-
     //display the created CSV data on the web browser   
     //document.write(csv);  
     //console.log(csv);
@@ -170,18 +145,30 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 }
 
 function handleMotion(event) {
-  valueToPush[0] = event.alpha;
-  valueToPush[1] = event.beta;
-  valueToPush[2] = event.gamma;
-  valueToPush[3] = event.accelerationIncludingGravity.x;
-  valueToPush[4] = event.accelerationIncludingGravity.y;
-  valueToPush[5] = event.accelerationIncludingGravity.z;
-  valueToPush[6] = event.acceleration.x;
-  valueToPush[7] = event.acceleration.y;
-  valueToPush[8] = event.acceleration.z;
-  valueToPush[9] = event.rotationRate.alpha;
-  valueToPush[10] = event.rotationRate.beta;
-  valueToPush[11] = event.rotationRate.gamma;
+  if (event.alpha != null)
+    valueToPush[0] = event.alpha;
+  if (event.beta != null)
+    valueToPush[1] = event.beta;
+  if (event.gamma != null)
+    valueToPush[2] = event.gamma;
+  if (event.accelerationIncludingGravity.x != null)
+    valueToPush[3] = event.accelerationIncludingGravity.x;
+  if (event.accelerationIncludingGravity.y != null)
+    valueToPush[4] = event.accelerationIncludingGravity.y;
+  if (event.accelerationIncludingGravity.z != null)
+    valueToPush[5] = event.accelerationIncludingGravity.z;
+  if (event.acceleration.x != null)
+    valueToPush[6] = event.acceleration.x;
+  if (event.acceleration.y != null)
+    valueToPush[7] = event.acceleration.y;
+  if (event.acceleration.z != null)
+    valueToPush[8] = event.acceleration.z;
+  if (event.rotationRate.alpha != null)
+    valueToPush[9] = event.rotationRate.alpha;
+  if (event.rotationRate.beta != null)
+    valueToPush[10] = event.rotationRate.beta;
+  if (event.rotationRate.gamma != null)
+    valueToPush[11] = event.rotationRate.gamma;
   arrSensors.push([valueToPush]);
 
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
