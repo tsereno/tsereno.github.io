@@ -169,9 +169,7 @@ function handleMotion(event) {
     valueToPush[10] = event.rotationRate.beta;
   if (event.rotationRate.gamma != null)
     valueToPush[11] = event.rotationRate.gamma;
-  arrSensors.push(valueToPush);
-  alert(event.acceleration.x);
-  alert(valueToPush[6]);
+  arrSensors.push(valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11]);
   alert(arrSensors);
 
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
