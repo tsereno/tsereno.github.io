@@ -45,6 +45,43 @@ function download_csv_file() {
       #demo-div ul {margin-bottom: 0.66rem;}
     </style>
 </head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+</style>
 <body>
 <main role="main" class="container">
 
@@ -81,11 +118,28 @@ function download_csv_file() {
 </script>
 -->
 
+
+<div class="slidecontainer">
+  <input type="range" min="-3" max="3" value="0" class="slider" id="myRange">
+  <p>Value: <span id="myRangeValue"></span></p>
+</div>
+
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("myRangeValue");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>
+
 <!-- create an HTML button to download the CSV file on click -->  
 <button onclick="download_csv_file()"> Download CSV </button>  
 
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
 <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start Training</a>
+<!-->
 <p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning" id="num-observed-events">0</span></p>
 
 
@@ -118,6 +172,7 @@ function download_csv_file() {
   <li>Y-axis: <span id="Gyroscope_y">0</span><span>&deg;/s</span></li>
   <li>Z-axis: <span id="Gyroscope_z">0</span><span>&deg;/s</span></li>
 </ul>
+-->
 
 </div>
 </main>
@@ -187,20 +242,20 @@ function handleMotion(event) {
   arrSensors.push([valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
   //alert(arrSensors);
 
-  updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-  updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-  updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+  //updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
+  //updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
+  //updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
-  updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
-  updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
-  updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
+  //updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
+  //updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
+  //updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
 
-  updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
+  //updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
-  updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
-  updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
-  updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
-  incrementEventCount();
+  //updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
+  //updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
+  //updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
+  //incrementEventCount();
 }
 
 let is_running = false;
