@@ -145,6 +145,18 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 }
 
 function handleMotion(event) {
+  valueToPush[0]=-999;
+  valueToPush[1]=-999;
+  valueToPush[2]=-999;
+  valueToPush[3]=-999;
+  valueToPush[4]=-999;
+  valueToPush[5]=-999;
+  valueToPush[6]=-999;
+  valueToPush[7]=-999;
+  valueToPush[8]=-999;
+  valueToPush[9]=-999;
+  valueToPush[10]=-999;
+  valueToPush[11]=-999;
   if (event.alpha != null)
     valueToPush[0] = event.alpha;
   if (event.beta != null)
