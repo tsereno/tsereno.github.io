@@ -13,7 +13,7 @@
 function download_csv_file() {  
   
     //define the heading for each row of the data  
-    var csv = 'alpha,beta,gamma,accelerationIncludingGravity.x,accelerationIncludingGravity.y,accelerationIncludingGravity.z,acceleration.x,acceleration.y,acceleration.z,interval,rotationRate.alpha,rotationRate.beta,rotationRate.gamma\n';  
+    var csv = 'beta,gamma,alpha,accelerationIncludingGravity.x,accelerationIncludingGravity.y,accelerationIncludingGravity.z,acceleration.x,acceleration.y,acceleration.z,interval,rotationRate.alpha,rotationRate.beta,rotationRate.gamma\n';  
       
     //merge the data with CSV  
     arrSensors.forEach(function(row) {  
@@ -127,9 +127,9 @@ var arrSensors = new Array([]);
 var valueToPush = new Array();
 
 function handleOrientation(event) {
-  updateFieldIfNotNull('Orientation_a', event.alpha);
   updateFieldIfNotNull('Orientation_b', event.beta);
   updateFieldIfNotNull('Orientation_g', event.gamma);
+  updateFieldIfNotNull('Orientation_a', event.alpha);
   incrementEventCount();
 }
 
@@ -158,12 +158,12 @@ function handleMotion(event) {
   valueToPush[10]=-999;
   valueToPush[11]=-999;
   valueToPush[11]=-999;
-  if (event.alpha != null)
-    valueToPush[0] = event.alpha;
   if (event.beta != null)
-    valueToPush[1] = event.beta;
+    valueToPush[0] = event.beta;
   if (event.gamma != null)
-    valueToPush[2] = event.gamma;
+    valueToPush[1] = event.gamma;
+  if (event.alpha != null)
+    valueToPush[2] = event.alpha;
   if (event.accelerationIncludingGravity.x != null)
     valueToPush[3] = event.accelerationIncludingGravity.x;
   if (event.accelerationIncludingGravity.y != null)
