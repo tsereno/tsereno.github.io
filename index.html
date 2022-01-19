@@ -189,27 +189,6 @@ slider.oninput = function() {
 </div>
 </main>
 
-<script src="shake.js"></script>
-<script>
-var myShakeEvent = new Shake({
-    threshold: 15, // optional shake strength threshold
-    timeout: 1000 // optional, determines the frequency of event generation
-});
-
-// Start listening to device motion
-myShakeEvent.start(); 
-
-// Register a shake event listener on window with your callback
-window.addEventListener('shake', shakeEventDidOccur, false); 
-
-//function to call when shake occurs
-function shakeEventDidOccur () {
-
-    //put your own code here etc.
-    alert('shake!');
-}
-</script>
-
 <script>
 
 var arrSensors = new Array([]);
@@ -297,7 +276,7 @@ function handleMotion(event) {
     valueToPush[11] = event.rotationRate.gamma;
   if (event.rotationRate.alpha != null)
     valueToPush[12] = event.rotationRate.alpha;
-  arrSensors.push(motionCount,Date.now(),[valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
+  arrSensors.push([motionCount,Date.now(),valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
   //alert(arrSensors);
 
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
@@ -342,7 +321,7 @@ demo_button.onclick = function(e) {
      //link2.style.visibility = 'hidden';
      is_running = true;
 
-    sleep(10000).then(() => {
+    sleep(7500).then(() => {
      window.removeEventListener("devicemotion", handleMotion);
      window.removeEventListener("deviceorientation", handleOrientation);
      demo_button.innerHTML = "START";
