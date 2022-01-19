@@ -188,6 +188,28 @@ slider.oninput = function() {
 
 </div>
 </main>
+
+<script src="shake.js"></script>
+<script>
+var myShakeEvent = new Shake({
+    threshold: 15, // optional shake strength threshold
+    timeout: 1000 // optional, determines the frequency of event generation
+});
+
+// Start listening to device motion
+myShakeEvent.start(); 
+
+// Register a shake event listener on window with your callback
+window.addEventListener('shake', shakeEventDidOccur, false); 
+
+//function to call when shake occurs
+function shakeEventDidOccur () {
+
+    //put your own code here etc.
+    alert('shake!');
+}
+</script>
+
 <script>
 
 var arrSensors = new Array([]);
@@ -289,33 +311,6 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function unlockAudio() {
-    const sound = new Audio('https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
-
-    sound.play();
-    sound.pause();
-    sound.currentTime = 0;
-
-    document.body.removeEventListener('click', unlockAudio)
-    document.body.removeEventListener('touchstart', unlockAudio)
-}
-
-
-function play() {
-  //var audio = new Audio('https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
-  //audio.play();
-  const sound = new Audio('https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
-
-  const promise = sound.play();
-
-  if (promise !== undefined) {
-      promise.then(() => {}).catch(error => console.error);
-  }
-}
-
-document.body.addEventListener('click', unlockAudio);
-document.body.addEventListener('touchstart', unlockAudio);
-
 demo_button.onclick = function(e) {
   e.preventDefault();
   
@@ -344,10 +339,7 @@ demo_button.onclick = function(e) {
      //link2.style.visibility = 'hidden';
      is_running = true;
 
-    sleep(5000).then(() => {
-     play(); 	
-
-    sleep(3500).then(() => {
+    sleep(7500).then(() => {
      window.removeEventListener("devicemotion", handleMotion);
      window.removeEventListener("deviceorientation", handleOrientation);
      demo_button.innerHTML = "START";
