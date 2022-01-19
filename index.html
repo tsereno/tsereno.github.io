@@ -305,7 +305,6 @@ demo_button.onclick = function(e) {
     DeviceMotionEvent.requestPermission();
   }
 
-    sleep(5000).then(() => {
      window.addEventListener("devicemotion", handleMotion);
      window.addEventListener("deviceorientation", handleOrientation);
      //document.getElementById("start_demo").innerHTML = "RUNNING";
@@ -322,9 +321,11 @@ demo_button.onclick = function(e) {
      link3.style.display = 'none'; //or
      //link2.style.visibility = 'hidden';
      is_running = true;
+
+    sleep(5000).then(() => {
      play(); 	
 
-    sleep(2500).then(() => {
+    sleep(3500).then(() => {
      window.removeEventListener("devicemotion", handleMotion);
      window.removeEventListener("deviceorientation", handleOrientation);
      demo_button.innerHTML = "START";
