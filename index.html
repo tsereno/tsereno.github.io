@@ -304,23 +304,23 @@ demo_button.onclick = function(e) {
     //link2.style.visibility = 'hidden';
     is_running = false;
   }else{
-    sleep(3000).then(() => { console.log("continued after sleep..."); });
-	
-    window.addEventListener("devicemotion", handleMotion);
-    window.addEventListener("deviceorientation", handleOrientation);
-    document.getElementById("start_demo").innerHTML = "Stop Training";
-    demo_button.classList.remove('btn-success');
-    demo_button.classList.add('btn-danger');
-	var link = document.getElementById('myRange');
-    link.style.display = 'none'; //or
-    //link.style.visibility = 'hidden';
-	var link2 = document.getElementById('myRangeValue');
-    link2.style.display = 'none'; //or
-    //link2.style.visibility = 'hidden';
-	var link3 = document.getElementById('downloadButton');
-    link3.style.display = 'none'; //or
-    //link2.style.visibility = 'hidden';
-    is_running = true;
+    sleep(3000).then(() => { 	
+     window.addEventListener("devicemotion", handleMotion);
+     window.addEventListener("deviceorientation", handleOrientation);
+     document.getElementById("start_demo").innerHTML = "Stop Training";
+     demo_button.classList.remove('btn-success');
+     demo_button.classList.add('btn-danger');
+	 var link = document.getElementById('myRange');
+     link.style.display = 'none'; //or
+     //link.style.visibility = 'hidden';
+	 var link2 = document.getElementById('myRangeValue');
+     link2.style.display = 'none'; //or
+     //link2.style.visibility = 'hidden';
+	 var link3 = document.getElementById('downloadButton');
+     link3.style.display = 'none'; //or
+     //link2.style.visibility = 'hidden';
+     is_running = true;
+   });
   }
 };
 
