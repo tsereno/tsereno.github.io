@@ -289,10 +289,32 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function play() {
-  var audio = new Audio('https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
-  audio.play();
+function unlockAudio() {
+    const sound = new Audio('https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
+
+    sound.play();
+    sound.pause();
+    sound.currentTime = 0;
+
+    document.body.removeEventListener('click', unlockAudio)
+    document.body.removeEventListener('touchstart', unlockAudio)
 }
+
+
+function play() {
+  //var audio = new Audio('https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
+  //audio.play();
+  const sound = new Audio('https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
+
+  const promise = sound.play();
+
+  if (promise !== undefined) {
+      promise.then(() => {}).catch(error => console.error);
+  }
+}
+
+document.body.addEventListener('click', unlockAudio);
+document.body.addEventListener('touchstart', unlockAudio);
 
 demo_button.onclick = function(e) {
   e.preventDefault();
