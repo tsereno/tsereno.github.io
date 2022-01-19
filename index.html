@@ -131,7 +131,7 @@ function download_csv_file() {
 </script>
 -->
 
-
+<!--
 <div class="slidecontainer">
   <input type="range" min="-3" max="3" value="0" class="slider" id="myRange">
   <p><span id="myRangeValue"></span></p>
@@ -145,6 +145,8 @@ output.innerHTML = slider.value;
 slider.oninput = function() {
   output.innerHTML = this.value;
 }
+-->
+
 </script>
 
 <!-- create an HTML button to download the CSV file on click -->  
@@ -207,15 +209,6 @@ link2.style.display = 'none'; //or
 var link3 = document.getElementById('downloadButton');
 link3.style.display = 'none'; //or
 //link2.style.visibility = 'hidden';
-
-// Request permission for iOS 13+ devices
-if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-) {
-    DeviceMotionEvent.requestPermission();
-  }
-
 
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_b', event.beta);
@@ -301,6 +294,15 @@ function sleep(ms) {
 
 demo_button.onclick = function(e) {
   e.preventDefault();
+
+// Request permission for iOS 13+ devices
+if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+) {
+    DeviceMotionEvent.requestPermission();
+  }
+
 
   motionCount = motionCount + 1;
   
