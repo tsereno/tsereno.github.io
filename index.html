@@ -47,6 +47,19 @@ function download_csv_file() {
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+.btn {
+  display: block;
+  width: 100%;
+  height: 200px;
+  border: none;
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 28px;
+  font-size: 72px;
+  cursor: pointer;
+  text-align: center;
+}
+
 .slidecontainer {
   width: 100%;
 }
@@ -138,7 +151,7 @@ slider.oninput = function() {
 <button onclick="download_csv_file()" id="downloadButton"> Download CSV </button>  
 
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
-<a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start Training</a>
+<a id="start_demo" class="btn" href="#" role="button">Start Training</a>
 
 <p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning" id="num-observed-events">0</span></p>
 
@@ -212,6 +225,7 @@ function handleMotion(event) {
   valueToPush[10]=-999;
   valueToPush[11]=-999;
   valueToPush[11]=-999;
+  valueToPush[12]=-999;
   if (event.beta != null)
     valueToPush[0] = event.beta;
   if (event.gamma != null)
