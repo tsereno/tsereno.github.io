@@ -249,20 +249,20 @@ function handleMotion(event) {
   arrSensors.push([valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
   //alert(arrSensors);
 
-  //updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-  //updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-  //updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+  updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
+  updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
+  updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
-  //updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
-  //updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
-  //updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
+  updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
+  updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
+  updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
 
-  //updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
+  updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
-  //updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
-  //updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
-  //updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
-  //incrementEventCount();
+  updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
+  updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
+  updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
+  incrementEventCount();
 }
 
 let is_running = false;
