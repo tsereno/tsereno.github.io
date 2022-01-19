@@ -289,6 +289,11 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function play() {
+  var audio = new Audio('https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
+  audio.play();
+}
+
 demo_button.onclick = function(e) {
   e.preventDefault();
   
@@ -303,7 +308,7 @@ demo_button.onclick = function(e) {
   if (is_running){
     window.removeEventListener("devicemotion", handleMotion);
     window.removeEventListener("deviceorientation", handleOrientation);
-    demo_button.innerHTML = "Start demo";
+    demo_button.innerHTML = "START";
     demo_button.classList.add('btn-success');
     demo_button.classList.remove('btn-danger');
 	var link = document.getElementById('myRange');
@@ -317,10 +322,11 @@ demo_button.onclick = function(e) {
     //link2.style.visibility = 'hidden';
     is_running = false;
   }else{
-    sleep(3000).then(() => { 	
+    sleep(3000).then(() => {
+     play(); 	
      window.addEventListener("devicemotion", handleMotion);
      window.addEventListener("deviceorientation", handleOrientation);
-     document.getElementById("start_demo").innerHTML = "Stop Training";
+     document.getElementById("start_demo").innerHTML = "STOP";
      demo_button.classList.remove('btn-success');
      demo_button.classList.add('btn-danger');
 	 var link = document.getElementById('myRange');
