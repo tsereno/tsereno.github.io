@@ -181,6 +181,13 @@ slider.oninput = function() {
 var arrSensors = new Array([]);
 var valueToPush = new Array();
 
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+const delayedStart = async () => {
+  await delay(3000);
+  console.log("Waited 3s");
+};
+
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_b', event.beta);
   updateFieldIfNotNull('Orientation_g', event.gamma);
@@ -300,6 +307,7 @@ demo_button.onclick = function(e) {
     //link2.style.visibility = 'hidden';
     is_running = false;
   }else{
+    delayedStart();
     window.addEventListener("devicemotion", handleMotion);
     window.addEventListener("deviceorientation", handleOrientation);
     document.getElementById("start_demo").innerHTML = "Stop Training";
