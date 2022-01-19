@@ -215,6 +215,29 @@ function shakeEventDidOccur () {
 var arrSensors = new Array([]);
 var valueToPush = new Array();
 
+let motionCount = 0;
+let is_running = false;
+let demo_button = document.getElementById("start_demo");
+
+var link = document.getElementById('myRange');
+link.style.display = 'none'; //or
+//link.style.visibility = 'hidden';
+var link2 = document.getElementById('myRangeValue');
+link2.style.display = 'none'; //or
+//link2.style.visibility = 'hidden';
+var link3 = document.getElementById('downloadButton');
+link3.style.display = 'none'; //or
+//link2.style.visibility = 'hidden';
+
+// Request permission for iOS 13+ devices
+if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+) {
+    DeviceMotionEvent.requestPermission();
+  }
+
+
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_b', event.beta);
   updateFieldIfNotNull('Orientation_g', event.gamma);
@@ -274,7 +297,7 @@ function handleMotion(event) {
     valueToPush[11] = event.rotationRate.gamma;
   if (event.rotationRate.alpha != null)
     valueToPush[12] = event.rotationRate.alpha;
-  arrSensors.push([valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
+  arrSensors.push(motionCount,Date.now(),[valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
   //alert(arrSensors);
 
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
@@ -293,35 +316,15 @@ function handleMotion(event) {
   incrementEventCount();
 }
 
-let is_running = false;
-let demo_button = document.getElementById("start_demo");
-
-var link = document.getElementById('myRange');
-link.style.display = 'none'; //or
-//link.style.visibility = 'hidden';
-var link2 = document.getElementById('myRangeValue');
-link2.style.display = 'none'; //or
-//link2.style.visibility = 'hidden';
-var link3 = document.getElementById('downloadButton');
-link3.style.display = 'none'; //or
-//link2.style.visibility = 'hidden';
-
-
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 demo_button.onclick = function(e) {
   e.preventDefault();
-  
-  // Request permission for iOS 13+ devices
-  if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-  ) {
-    DeviceMotionEvent.requestPermission();
-  }
 
+  motionCount = motionCount + 1;
+  
      window.addEventListener("devicemotion", handleMotion);
      window.addEventListener("deviceorientation", handleOrientation);
      //document.getElementById("start_demo").innerHTML = "RUNNING";
@@ -339,7 +342,7 @@ demo_button.onclick = function(e) {
      //link2.style.visibility = 'hidden';
      is_running = true;
 
-    sleep(7500).then(() => {
+    sleep(10000).then(() => {
      window.removeEventListener("devicemotion", handleMotion);
      window.removeEventListener("deviceorientation", handleOrientation);
      demo_button.innerHTML = "START";
