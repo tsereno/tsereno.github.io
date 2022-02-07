@@ -301,11 +301,15 @@ if (
     DeviceMotionEvent.requestPermission();
   }
 
+  window.addEventListener("devicemotion", handleMotion);
+  window.addEventListener("deviceorientation", handleOrientation);
+
+
 
   motionCount = motionCount + 1;
   
-     window.addEventListener("devicemotion", handleMotion);
-     window.addEventListener("deviceorientation", handleOrientation);
+     //window.addEventListener("devicemotion", handleMotion);
+     //window.addEventListener("deviceorientation", handleOrientation);
      //document.getElementById("start_demo").innerHTML = "RUNNING";
      demo_button.innerHTML = "RUNNING";
      //demo_button.classList.remove('btn-success');
@@ -321,9 +325,10 @@ if (
      //link2.style.visibility = 'hidden';
      is_running = true;
 
+/*
     sleep(7500).then(() => {
-     window.removeEventListener("devicemotion", handleMotion);
-     window.removeEventListener("deviceorientation", handleOrientation);
+     //window.removeEventListener("devicemotion", handleMotion);
+     //window.removeEventListener("deviceorientation", handleOrientation);
      demo_button.innerHTML = "START";
      //demo_button.classList.add('btn-success');
      //demo_button.classList.remove('btn-danger');
@@ -338,7 +343,7 @@ if (
      //link2.style.visibility = 'hidden';
      is_running = false;
 	});
-
+*/
   }
   
 /*
