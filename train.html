@@ -305,45 +305,43 @@ if (
   window.addEventListener("deviceorientation", handleOrientation);
 
 
-
-  motionCount = motionCount + 1;
+  //logic to detect a pause in motion for 2 seconds as indication of swing start
+     motionCount = motionCount + 1;
   
-     //window.addEventListener("devicemotion", handleMotion);
-     //window.addEventListener("deviceorientation", handleOrientation);
-     //document.getElementById("start_demo").innerHTML = "RUNNING";
-     demo_button.innerHTML = "RUNNING";
-     //demo_button.classList.remove('btn-success');
-     //demo_button.classList.add('btn-danger');
-	 var link = document.getElementById('myRange');
-     link.style.display = 'none'; //or
-     //link.style.visibility = 'hidden';
-	 var link2 = document.getElementById('myRangeValue');
-     link2.style.display = 'none'; //or
-     //link2.style.visibility = 'hidden';
-	 var link3 = document.getElementById('downloadButton');
-     link3.style.display = 'none'; //or
-     //link2.style.visibility = 'hidden';
+     ////window.addEventListener("devicemotion", handleMotion);
+     ////window.addEventListener("deviceorientation", handleOrientation);
+     ////document.getElementById("start_demo").innerHTML = "RUNNING";
+     //demo_button.innerHTML = "RUNNING";
+     ////demo_button.classList.remove('btn-success');
+     ////demo_button.classList.add('btn-danger');
+	 //var link = document.getElementById('myRange');
+     //link.style.display = 'none'; //or
+     ////link.style.visibility = 'hidden';
+	 //var link2 = document.getElementById('myRangeValue');
+     //link2.style.display = 'none'; //or
+     ////link2.style.visibility = 'hidden';
+	 //var link3 = document.getElementById('downloadButton');
+     //link3.style.display = 'none'; //or
+     ////link2.style.visibility = 'hidden';
      is_running = true;
 
-/*
-    sleep(7500).then(() => {
-     //window.removeEventListener("devicemotion", handleMotion);
-     //window.removeEventListener("deviceorientation", handleOrientation);
-     demo_button.innerHTML = "START";
-     //demo_button.classList.add('btn-success');
-     //demo_button.classList.remove('btn-danger');
-	 var link = document.getElementById('myRange');
-     link.style.display = 'block'; //or
-     //link.style.visibility = 'hidden';
-	 var link2 = document.getElementById('myRangeValue');
-     link2.style.display = 'block'; //or
-     //link2.style.visibility = 'hidden';
-	 var link3 = document.getElementById('downloadButton');
-     link3.style.display = 'block'; //or
-     //link2.style.visibility = 'hidden';
-     is_running = false;
-	});
-*/
+
+    if (is_running == true) {
+     sleep(2500).then(() => {
+      //window.removeEventListener("devicemotion", handleMotion);
+      //window.removeEventListener("deviceorientation", handleOrientation);
+      //demo_button.innerHTML = "START";
+      ////demo_button.classList.add('btn-success');
+      ////demo_button.classList.remove('btn-danger');
+	  //var link = document.getElementById('myRange');
+      //link.style.display = 'block'; //or
+	  //var link2 = document.getElementById('myRangeValue');
+      //link2.style.display = 'block'; //or
+	  //var link3 = document.getElementById('downloadButton');
+      //link3.style.display = 'block'; //or
+      is_running = false;
+	 });
+    }
   }
   
 /*
