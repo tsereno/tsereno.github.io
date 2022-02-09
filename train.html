@@ -55,7 +55,7 @@ function download_csv_file() {
   background-color: #04AA6D;
   color: white;
   padding: 14px 28px;
-  font-size: 72px;
+  font-size: 60px;
   cursor: pointer;
   text-align: center;
 }
@@ -219,6 +219,7 @@ function incrementEventCount(){
   let counterElement = document.getElementById("num-observed-events")
   let eventCount = parseInt(counterElement.innerHTML)
   counterElement.innerHTML = eventCount + 1;
+  return counterElement.innerHTML
 }
 
 function updateFieldIfNotNull(fieldName, value, precision=10){
@@ -228,8 +229,7 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 
 function handleMotion(event) {
   //logic to detect a pause in motion for 2 seconds as indication of swing start
-     motionCount = motionCount + 1;
-  
+
      ////window.addEventListener("devicemotion", handleMotion);
      ////window.addEventListener("deviceorientation", handleOrientation);
      ////document.getElementById("start_demo").innerHTML = "RUNNING";
@@ -307,7 +307,7 @@ function handleMotion(event) {
     valueToPush[11] = event.rotationRate.gamma;
   if (event.rotationRate.alpha != null)
     valueToPush[12] = event.rotationRate.alpha;
-  arrSensors.push([motionCount,Date.now(),valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
+  arrSensors.push([incrementEventCount(),Date.now(),valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
  }
   //alert(arrSensors);
 
@@ -325,7 +325,6 @@ function handleMotion(event) {
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
   updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
 
-  incrementEventCount();
 }
 
 function sleep(ms) {
