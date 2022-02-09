@@ -13,7 +13,7 @@
 function download_csv_file() {  
   
     //define the heading for each row of the data  
-    var csv = 'beta,gamma,alpha,accelerationIncludingGravity.x,accelerationIncludingGravity.y,accelerationIncludingGravity.z,acceleration.x,acceleration.y,acceleration.z,interval,rotationRate.alpha,rotationRate.beta,rotationRate.gamma\n';  
+    var csv = 'motionCount,sliderValue,step,timestamp,beta,gamma,alpha,accelerationIncludingGravity.x,accelerationIncludingGravity.y,accelerationIncludingGravity.z,acceleration.x,acceleration.y,acceleration.z,interval,rotationRate.alpha,rotationRate.beta,rotationRate.gamma\n';  
       
     //merge the data with CSV  
     arrSensors.forEach(function(row) {  
@@ -142,7 +142,7 @@ var output = document.getElementById("myRangeValue");
 output.innerHTML = slider.value;
 
 slider.oninput = function() {
-  output.innerHTML = this.value;
+  output.innerHTML = this.value;  
 }
 
 </script>
@@ -252,7 +252,7 @@ function handleMotion(event) {
   //logic to detect a pause in motion for 2 seconds as indication of swing start
     if (event.acceleration.x > 3.5 || event.acceleration.y > 3.5 || event.acceleration.z > 3.5) {
 	 is_running = true;
-     counterElement.innerHTML = eventCount + 1;
+	 motionCount = motionCount + 1;
     }
 
     if (is_running == true) {
@@ -329,7 +329,7 @@ function handleMotion(event) {
     valueToPush[11] = event.rotationRate.gamma;
   if (event.rotationRate.alpha != null)
     valueToPush[12] = event.rotationRate.alpha;
-  arrSensors.push([incrementEventCount(),Date.now(),valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
+  arrSensors.push([motionCount,slider.value,incrementEventCount(),Date.now(),valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
  }
 
 }
