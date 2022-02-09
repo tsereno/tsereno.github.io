@@ -250,10 +250,12 @@ function handleMotion(event) {
      //is_running = false;
 	 
   //logic to detect a pause in motion for 2 seconds as indication of swing start
+   if (is_running == false) {
     if (event.acceleration.x > 3.5 || event.acceleration.y > 3.5 || event.acceleration.z > 3.5) {
 	 is_running = true;
 	 motionCount = motionCount + 1;
     }
+   }
 
     if (is_running == true) {
      sleep(2750).then(() => {
