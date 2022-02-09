@@ -227,6 +227,46 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 }
 
 function handleMotion(event) {
+  //logic to detect a pause in motion for 2 seconds as indication of swing start
+     motionCount = motionCount + 1;
+  
+     ////window.addEventListener("devicemotion", handleMotion);
+     ////window.addEventListener("deviceorientation", handleOrientation);
+     ////document.getElementById("start_demo").innerHTML = "RUNNING";
+     //demo_button.innerHTML = "RUNNING";
+     ////demo_button.classList.remove('btn-success');
+     ////demo_button.classList.add('btn-danger');
+	 //var link = document.getElementById('myRange');
+     //link.style.display = 'none'; //or
+     ////link.style.visibility = 'hidden';
+	 //var link2 = document.getElementById('myRangeValue');
+     //link2.style.display = 'none'; //or
+     ////link2.style.visibility = 'hidden';
+	 //var link3 = document.getElementById('downloadButton');
+     //link3.style.display = 'none'; //or
+     ////link2.style.visibility = 'hidden';
+     is_running = true;
+
+
+    if (is_running == true) {
+     sleep(2500).then(() => {
+      //window.removeEventListener("devicemotion", handleMotion);
+      //window.removeEventListener("deviceorientation", handleOrientation);
+      //demo_button.innerHTML = "START";
+      ////demo_button.classList.add('btn-success');
+      ////demo_button.classList.remove('btn-danger');
+	  //var link = document.getElementById('myRange');
+      //link.style.display = 'block'; //or
+	  //var link2 = document.getElementById('myRangeValue');
+      //link2.style.display = 'block'; //or
+	  //var link3 = document.getElementById('downloadButton');
+      //link3.style.display = 'block'; //or
+      is_running = false;
+	 });
+    }
+
+ if (is_running == true) {
+
   valueToPush[0]=-999;
   valueToPush[1]=-999;
   valueToPush[2]=-999;
@@ -268,6 +308,7 @@ function handleMotion(event) {
   if (event.rotationRate.alpha != null)
     valueToPush[12] = event.rotationRate.alpha;
   arrSensors.push([motionCount,Date.now(),valueToPush[0],valueToPush[1],valueToPush[2],valueToPush[3],valueToPush[4],valueToPush[5],valueToPush[6],valueToPush[7],valueToPush[8],valueToPush[9],valueToPush[10],valueToPush[11],valueToPush[12]]);
+ }
   //alert(arrSensors);
 
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
@@ -283,6 +324,7 @@ function handleMotion(event) {
   updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
   updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
+
   incrementEventCount();
 }
 
@@ -303,46 +345,7 @@ if (
 
   window.addEventListener("devicemotion", handleMotion);
   window.addEventListener("deviceorientation", handleOrientation);
-
-
-  //logic to detect a pause in motion for 2 seconds as indication of swing start
-     motionCount = motionCount + 1;
-  
-     ////window.addEventListener("devicemotion", handleMotion);
-     ////window.addEventListener("deviceorientation", handleOrientation);
-     ////document.getElementById("start_demo").innerHTML = "RUNNING";
-     //demo_button.innerHTML = "RUNNING";
-     ////demo_button.classList.remove('btn-success');
-     ////demo_button.classList.add('btn-danger');
-	 //var link = document.getElementById('myRange');
-     //link.style.display = 'none'; //or
-     ////link.style.visibility = 'hidden';
-	 //var link2 = document.getElementById('myRangeValue');
-     //link2.style.display = 'none'; //or
-     ////link2.style.visibility = 'hidden';
-	 //var link3 = document.getElementById('downloadButton');
-     //link3.style.display = 'none'; //or
-     ////link2.style.visibility = 'hidden';
-     is_running = true;
-
-
-    if (is_running == true) {
-     sleep(2500).then(() => {
-      //window.removeEventListener("devicemotion", handleMotion);
-      //window.removeEventListener("deviceorientation", handleOrientation);
-      //demo_button.innerHTML = "START";
-      ////demo_button.classList.add('btn-success');
-      ////demo_button.classList.remove('btn-danger');
-	  //var link = document.getElementById('myRange');
-      //link.style.display = 'block'; //or
-	  //var link2 = document.getElementById('myRangeValue');
-      //link2.style.display = 'block'; //or
-	  //var link3 = document.getElementById('downloadButton');
-      //link3.style.display = 'block'; //or
-      is_running = false;
-	 });
-    }
-  }
+}
   
 /*
   if (is_running){
