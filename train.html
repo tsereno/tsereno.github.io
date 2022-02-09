@@ -228,7 +228,6 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 }
 
 function handleMotion(event) {
-  //logic to detect a pause in motion for 2 seconds as indication of swing start
 
      ////window.addEventListener("devicemotion", handleMotion);
      ////window.addEventListener("deviceorientation", handleOrientation);
@@ -245,8 +244,13 @@ function handleMotion(event) {
 	 //var link3 = document.getElementById('downloadButton');
      //link3.style.display = 'none'; //or
      ////link2.style.visibility = 'hidden';
-     is_running = true;
 
+     //is_running = false;
+	 
+  //logic to detect a pause in motion for 2 seconds as indication of swing start
+    if (event.acceleration.x > 3 || event.acceleration.y > 3 || event.acceleration.z > 3) {
+	 is_running = true;
+    }
 
     if (is_running == true) {
      sleep(2500).then(() => {
