@@ -199,7 +199,7 @@ let is_running = false;
 let demo_button = document.getElementById("start_demo");
 
 var link = document.getElementById('myRange');
-link.style.display = 'none'; //or
+link.style.display = 'block'; //or
 //link.style.visibility = 'hidden';
 var link2 = document.getElementById('myRangeValue');
 link2.style.display = 'block'; //or
@@ -250,8 +250,9 @@ function handleMotion(event) {
      //is_running = false;
 	 
   //logic to detect a pause in motion for 2 seconds as indication of swing start
-    if (event.acceleration.x > 3 || event.acceleration.y > 3 || event.acceleration.z > 3) {
+    if (event.acceleration.x > 3.5 || event.acceleration.y > 3.5 || event.acceleration.z > 3.5) {
 	 is_running = true;
+     counterElement.innerHTML = eventCount + 1;
     }
 
     if (is_running == true) {
