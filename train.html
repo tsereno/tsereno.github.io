@@ -208,7 +208,6 @@ var link3 = document.getElementById('downloadButton');
 link3.style.display = 'block'; //or
 //link3.style.display = 'none'; //or
 //link2.style.visibility = 'hidden';
-var is_running = false;
 
 function handleOrientation(event) {
   if (is_running == true) {
@@ -256,7 +255,7 @@ function handleMotion(event) {
     }
 
     if (is_running == true) {
-     sleep(2500).then(() => {
+     sleep(2750).then(() => {
       //window.removeEventListener("devicemotion", handleMotion);
       //window.removeEventListener("deviceorientation", handleOrientation);
       //demo_button.innerHTML = "START";
